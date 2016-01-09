@@ -1,0 +1,65 @@
+##################
+##### JUSTUS #####
+##################
+
+name:           justus-quick-max-5min
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -q quick -l nodes=%NPROC/16%:ppn=16,walltime=00:05:00
+processors:     32
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
+
+name:           justus-short-max-2days
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -q short -l nodes=%NPROC/16%:ppn=16,walltime=48:00:00
+processors:     1024
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
+
+name:           justus-normal-max-7days
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -q normal -l nodes=%NPROC/16%:ppn=16,walltime=168:00:00
+processors:     256
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
+
+name:           justus-long-max-14days
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -q long -l nodes=%NPROC/16%:ppn=16,walltime=336:00:00
+processors:     64
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
+name:           justus-docking-max-7days
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -l nodes=1:ppn=1,walltime=168:00:00
+processors:     256
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
+
+name:           justus-docking-max-2days
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -l nodes=1:ppn=1,walltime=2:00:00:00
+processors:     256
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
+
+name:           justus-docking-max-5min
+host:           justus.uni-ulm.de
+user:		%USER_JUSTUS%
+queue:          MOAB
+Qargs:          -l nodes=1:ppn=1,walltime=00:15:00
+processors:     256
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
