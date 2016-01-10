@@ -4,36 +4,36 @@
 
 name:           bwuni-develop-max-30min
 host:           uc1-login1.scc.kit.edu
-user:		%USER_BWUNI%
+user:           %USER_BWUNI%
 queue:          MOAB
-Qargs: 		-q develop -l nodes=1:ppn=%NPROC%
-processors: 	16 
+Qargs:          -q develop -l nodes=1:ppn=%NPROC%
+processors:     16 
 tmpdir:         /tmp
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
 
 #
-name:        	bwuni-multinode-max-2days
-host:		uc1-login1.scc.kit.edu
-user:		%USER_BWUNI%
-queue:       	MOAB
-Qargs: 	 	-q multinode -l nodes=2:ppn=%NPROC%
-processors:  	16
+name:           bwuni-multinode-max-2days
+host:           uc1-login1.scc.kit.edu
+user:           %USER_BWUNI%
+queue:          MOAB
+Qargs:          -q multinode -l nodes=2:ppn=%NPROC%
+processors:     16
 tmpdir:         /scratch
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
 
 #
 name:           bwuni-singlenode-max-3days
 host:           uc1-login1.scc.kit.edu
-user:		%USER_BWUNI%
+user:           %USER_BWUNI%
 queue:          MOAB
-Qargs:         -q singlenode -l nodes=1:ppn=%NPROC%
+Qargs:          -q singlenode -l nodes=1:ppn=%NPROC%
 processors:     16
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
 
 #
 name:           bwuni-verylong-max-6days
 host:           uc1-login1.scc.kit.edu
-user:		%USER_BWUNI%
+user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q verylong -l nodes=1:ppn=%NPROC%
 processors:     16
@@ -42,9 +42,10 @@ schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
 #
 name:           bwuni-fat-max-1day
 host:           uc1-login1.scc.kit.edu
-user:		%USER_BWUNI%
+user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q fat -l nodes=1:ppn=%NPROC%
 processors:     32
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+
 

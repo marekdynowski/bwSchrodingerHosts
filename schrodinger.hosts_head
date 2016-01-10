@@ -55,8 +55,9 @@
 #######################################################################
 
 #
-name:		localhost
-tmpdir:		/tmp
-env:		LM_LICENSE_FILE=%LICENSE_SERVER%
-env:		SCHRODINGER_THIRDPARTY=/opt/bwgrid/chem/schrodinger/2015u3/thirdparty
+name:           localhost
+tmpdir:         /tmp
+env:            LM_LICENSE_FILE=%LICENSE_SERVER%
+env:            SCHRODINGER_THIRDPARTY=/opt/bwgrid/chem/schrodinger/2015u3/thirdparty
+
 
