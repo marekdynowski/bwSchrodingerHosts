@@ -66,31 +66,60 @@ env:            SCHRODINGER_THIRDPARTY=/opt/bwgrid/chem/schrodinger/%SCHROD_VERS
 ##################
 
 #
-name:           bwgrid-single-node
+name:           bwgrid-single-node-walltime-3d
 host:           u-003-scfe03.uni-tuebingen.de
 user:           %USER_BWGRID%
 queue:          MOAB
-Qargs:          -l nodes=1:ppn=%NPROC% -l walltime=00:02:00:00
+Qargs:          -l nodes=1:ppn=%NPROC% -l walltime=00:71:59:00
+processors:     1152
+tmpdir:         /tmp
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
+
+name:           bwgrid-single-node-walltime-30d
+host:           u-003-scfe03.uni-tuebingen.de
+user:           %USER_BWGRID%
+queue:          MOAB
+Qargs:          -l nodes=1:ppn=%NPROC% -l walltime=00:744:00:00
+processors:     1152
+tmpdir:         /tmp
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
+
+#
+name:           bwgrid-docking-node-walltime-3d
+host:           u-003-scfe03.uni-tuebingen.de
+user:           %USER_BWGRID%
+queue:          MOAB
+Qargs:          -l nodes=1:ppn=1 -l walltime=00:71:59:00
+processors:     1152
+tmpdir:         /tmp
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
+
+#
+name:           bwgrid-docking-node-walltime-30d
+host:           u-003-scfe03.uni-tuebingen.de
+user:           %USER_BWGRID%
+queue:          MOAB
+Qargs:          -l nodes=1:ppn=1 -l walltime=00:744:00:00
+processors:     1152
+tmpdir:         /tmp
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
+
+#
+name:           bwgrid-multi-node-walltime-3d
+host:           u-003-scfe03.uni-tuebingen.de
+user:           %USER_BWGRID%
+queue:          MOAB
+Qargs:          -l nodes=%NPROC/8%:ppn=8 -l walltime=00:71:59:00
 processors:     128
 tmpdir:         /tmp
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
-name:           bwgrid-docking-node
+name:           bwgrid-multi-node-walltime-30d
 host:           u-003-scfe03.uni-tuebingen.de
 user:           %USER_BWGRID%
 queue:          MOAB
-Qargs:          -l nodes=1:ppn=1 -l walltime=00:02:00:00
-processors:     128
-tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
-
-#
-name:           bwgrid-multi-node
-host:           u-003-scfe03.uni-tuebingen.de
-user:           %USER_BWGRID%
-queue:          MOAB
-Qargs:          -l nodes=%NPROC/8%:ppn=8 -l walltime=00:02:00:00
+Qargs:          -l nodes=%NPROC/8%:ppn=8 -l walltime=00:744:00:00
 processors:     128
 tmpdir:         /tmp
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
@@ -105,7 +134,7 @@ host:           uc1-login1.scc.kit.edu
 user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q develop -l nodes=1:ppn=%NPROC% -l walltime=00:00:30:00
-processors:     16 
+processors:     16
 schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
