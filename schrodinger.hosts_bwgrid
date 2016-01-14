@@ -10,7 +10,7 @@ queue:          MOAB
 Qargs:          -l nodes=1:ppn=%NPROC% -l walltime=00:02:00:00
 processors:     128
 tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwgrid-docking-node
@@ -20,7 +20,7 @@ queue:          MOAB
 Qargs:          -l nodes=1:ppn=1 -l walltime=00:02:00:00
 processors:     128
 tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwgrid-multi-node
@@ -30,4 +30,4 @@ queue:          MOAB
 Qargs:          -l nodes=%NPROC/8%:ppn=8 -l walltime=00:02:00:00
 processors:     128
 tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%

@@ -108,8 +108,9 @@ if [[ -e $SCHRODINGER_PATH/schrodinger.hosts.BAK ]]; then
 fi
 
 echo
-echo "Please specify the license server and your username on following clusters. Type nothing if you don't have an account."
+echo "Please specify the license server, Schrodinger version and your username on following clusters. Type nothing if you don't have an account."
 read -e -p "License server: " u_license_server
+read -e -p "Schrodinger version (e.g. 2015u4): " u_schrod_version
 read -e -p "bwGRiD - Uni Tübingen: " u_user_bwgrid
 read -e -p "bwUni - Uni Karlsruhe: " u_user_bwuni
 read -e -p "Justus - Uni Ulm: " u_user_justus
@@ -151,6 +152,7 @@ echo "# OVERVIEW #"
 echo "############"
 echo "Schrodinger path: $SCHRODINGER_PATH"
 echo "License server: $u_license_server"
+echo "Schrodinger version: $u_schrod_version"
 printf "Username - bwGRiD Tübingen: "
 if [[ -n $u_user_bwgrid ]]; then
 	echo "$u_user_bwgrid"
@@ -193,21 +195,29 @@ tar -xf $TMPDIR/SchrodingerHost.tar.gz -C $TMPDIR
 echo
 echo "Backup schrodinger.hosts to schrodinger.hosts.BAK and generating new schrodinger.hosts"
 mv $SCHRODINGER_PATH/schrodinger.hosts $SCHRODINGER_PATH/schrodinger.hosts.BAK
-sed "s/%LICENSE_SERVER%/$u_license_server/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_head > $SCHRODINGER_PATH/schrodinger.hosts
+sed "s/%LICENSE_SERVER%/$u_license_server/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_head \
+| sed "s/%SCHROD_VERSION%/$u_schrod_version/" \
+> $SCHRODINGER_PATH/schrodinger.hosts
 
 # bwGRiD
 if [[ -n $u_user_bwgrid ]]; then
-	sed "s/%USER_BWGRID%/$u_user_bwgrid/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_bwgrid >> $SCHRODINGER_PATH/schrodinger.hosts
+	sed "s/%USER_BWGRID%/$u_user_bwgrid/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_bwgrid \
+	| sed "s/%SCHROD_VERSION%/$u_schrod_version/" \
+	>> $SCHRODINGER_PATH/schrodinger.hosts
 fi
 
 # bwUni
 if [[ -n $u_user_bwuni ]]; then
-	sed "s/%USER_BWUNI%/$u_user_bwuni/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_bwuni >> $SCHRODINGER_PATH/schrodinger.hosts
+	sed "s/%USER_BWUNI%/$u_user_bwuni/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_bwuni \
+	| sed "s/%SCHROD_VERSION%/$u_schrod_version/" \
+	>> $SCHRODINGER_PATH/schrodinger.hosts
 fi
 
 # Justus
 if [[ -n $u_user_justus ]]; then
-	sed "s/%USER_JUSTUS%/$u_user_justus/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_justus >> $SCHRODINGER_PATH/schrodinger.hosts
+	sed "s/%USER_JUSTUS%/$u_user_justus/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_justus \
+	| sed "s/%SCHROD_VERSION%/$u_schrod_version/" \
+	>> $SCHRODINGER_PATH/schrodinger.hosts
 fi
 
 #if $INSTALL_MOAB; then

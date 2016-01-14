@@ -58,7 +58,7 @@
 name:           localhost
 tmpdir:         /scratch
 env:            LM_LICENSE_FILE=%LICENSE_SERVER%
-env:            SCHRODINGER_THIRDPARTY=/opt/bwgrid/chem/schrodinger/2015u3/thirdparty
+env:            SCHRODINGER_THIRDPARTY=/opt/bwgrid/chem/schrodinger/%SCHROD_VERSION%/thirdparty
 
 
 ##################
@@ -73,7 +73,7 @@ queue:          MOAB
 Qargs:          -l nodes=1:ppn=%NPROC% -l walltime=00:02:00:00
 processors:     128
 tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwgrid-docking-node
@@ -83,7 +83,7 @@ queue:          MOAB
 Qargs:          -l nodes=1:ppn=1 -l walltime=00:02:00:00
 processors:     128
 tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwgrid-multi-node
@@ -93,7 +93,7 @@ queue:          MOAB
 Qargs:          -l nodes=%NPROC/8%:ppn=8 -l walltime=00:02:00:00
 processors:     128
 tmpdir:         /tmp
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 #################
@@ -106,7 +106,7 @@ user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q develop -l nodes=1:ppn=%NPROC% -l walltime=00:00:30:00
 processors:     16 
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwuni-multinode-max-2days
@@ -115,7 +115,7 @@ user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q multinode -l nodes=2:ppn=%NPROC% -l walltime=02:00:00:00
 processors:     16
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwuni-singlenode-max-3days
@@ -124,7 +124,7 @@ user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q singlenode -l nodes=1:ppn=%NPROC% -l walltime=03:00:00:00
 processors:     16
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwuni-verylong-max-6days
@@ -133,7 +133,7 @@ user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q verylong -l nodes=1:ppn=%NPROC% -l walltime=06:00:00:00
 processors:     16
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 #
 name:           bwuni-fat-max-1day
@@ -142,7 +142,7 @@ user:           %USER_BWUNI%
 queue:          MOAB
 Qargs:          -q fat -l nodes=1:ppn=%NPROC% -l walltime=01:00:00:00
 processors:     32
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 ##################
@@ -155,7 +155,7 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -q quick -l nodes=%NPROC/16%:ppn=16,walltime=00:05:00
 processors:     32
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 name:           justus-short-max-2days
@@ -164,7 +164,7 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -q short -l nodes=%NPROC/16%:ppn=16,walltime=48:00:00
 processors:     1024
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 name:           justus-normal-max-7days
@@ -173,7 +173,7 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -q normal -l nodes=%NPROC/16%:ppn=16,walltime=168:00:00
 processors:     256
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 name:           justus-long-max-14days
@@ -182,7 +182,7 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -q long -l nodes=%NPROC/16%:ppn=16,walltime=336:00:00
 processors:     64
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 name:           justus-docking-max-7days
 host:           justus.uni-ulm.de
@@ -190,7 +190,7 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -l nodes=1:ppn=1,walltime=168:00:00
 processors:     256
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 name:           justus-docking-max-2days
@@ -199,7 +199,7 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -l nodes=1:ppn=1,walltime=2:00:00:00
 processors:     256
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
 
 
 name:           justus-docking-max-5min
@@ -208,4 +208,4 @@ user:           %USER_JUSTUS%
 queue:          MOAB
 Qargs:          -l nodes=1:ppn=1,walltime=00:15:00
 processors:     256
-schrodinger:    /opt/bwhpc/common/chem/schrodinger/2015u3
+schrodinger:    /opt/bwhpc/common/chem/schrodinger/%SCHROD_VERSION%
