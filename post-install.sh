@@ -79,8 +79,8 @@ else
 fi
 echo "TMP dir: $TMPDIR"
 
-echo 
-echo 
+echo
+echo
 
 while true; do
 	read -e -p "Please specify your Schrodinger path: " -i "/opt/" u_schrod_path
@@ -92,30 +92,30 @@ while true; do
 	fi
 done
 
-echo 
-echo 
-echo 
-echo 
+echo
+echo
+echo
+echo
 echo "Schrodinger path: $SCHRODINGER_PATH"
 echo "This script will generate a new schrodinger.hosts"
 echo "The current schrodinger.hosts will be renamed to schrodinger.hosts.BAK"
-echo 
+echo
 
 if [[ -e $SCHRODINGER_PATH/schrodinger.hosts.BAK ]]; then
 	echo "The file schrodinger.hosts.BAK does exist already"
 	echo "It will be overwritten"
-	echo 
+	echo
 fi
 
-echo 
+echo
 echo "Please specify the license server and your username on following clusters. Type nothing if you don't have an account."
 read -e -p "License server: " u_license_server
-read -e -p "BWHPC - Uni Tübingen: " u_user_bwhpc
+read -e -p "bwGRiD - Uni Tübingen: " u_user_bwgrid
 read -e -p "bwUni - Uni Karlsruhe: " u_user_bwuni
 read -e -p "Justus - Uni Ulm: " u_user_justus
 
-echo 
-echo 
+echo
+echo
 
 # check MOAB
 #if ! [[ -d $SCHRODINGER_PATH/queues/MOAB ]]; then
@@ -141,19 +141,19 @@ echo
 #	done
 #fi
 
-echo 
-echo 
-echo 
-echo 
-echo 
+echo
+echo
+echo
+echo
+echo
 echo "############"
 echo "# OVERVIEW #"
 echo "############"
 echo "Schrodinger path: $SCHRODINGER_PATH"
 echo "License server: $u_license_server"
-printf "Username - BWHPC Tübingen: "
-if [[ -n $u_user_bwhpc ]]; then
-	echo "$u_user_bwhpc"
+printf "Username - bwGRiD Tübingen: "
+if [[ -n $u_user_bwgrid ]]; then
+	echo "$u_user_bwgrid"
 else
 	echo "<no login>"
 fi
@@ -170,9 +170,9 @@ else
 	echo "<no login>"
 fi
 #echo "Install MOAB submitter: $INSTALL_MOAB"
-echo 
+echo
 echo "Please leave maestro closed while running this script. All current jobs will be killed!"
-echo 
+echo
 
 while true; do
     read -p "Do you wish to execute this script? (y/n) " yn
@@ -183,21 +183,21 @@ while true; do
     esac
 done
 
-echo 
+echo
 echo "Download and extracting the schrodinger.hosts packet"
-echo 
+echo
 
-wget -O $TMPDIR/SchrodingerHost.tar.gz $SCHRODHOST_TAR_URL
+curl -o $TMPDIR/SchrodingerHost.tar.gz $SCHRODHOST_TAR_URL
 tar -xf $TMPDIR/SchrodingerHost.tar.gz -C $TMPDIR
 
-echo 
+echo
 echo "Backup schrodinger.hosts to schrodinger.hosts.BAK and generating new schrodinger.hosts"
 mv $SCHRODINGER_PATH/schrodinger.hosts $SCHRODINGER_PATH/schrodinger.hosts.BAK
 sed "s/%LICENSE_SERVER%/$u_license_server/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_head > $SCHRODINGER_PATH/schrodinger.hosts
 
-# BWHPC
-if [[ -n $u_user_bwhpc ]]; then
-	sed "s/%USER_BWHPC%/$u_user_bwhpc/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_bwhpc >> $SCHRODINGER_PATH/schrodinger.hosts
+# bwGRiD
+if [[ -n $u_user_bwgrid ]]; then
+	sed "s/%USER_BWGRID%/$u_user_bwgrid/" $TMPDIR/marekdynowski-bwSchrodingerHosts-*/schrodinger.hosts_bwgrid >> $SCHRODINGER_PATH/schrodinger.hosts
 fi
 
 # bwUni
@@ -211,12 +211,12 @@ if [[ -n $u_user_justus ]]; then
 fi
 
 #if $INSTALL_MOAB; then
-echo 
+echo
 echo "Installing MOAB submitter"
 echo "Downloading and extracting the MOAB submitter packet"
-echo 
+echo
 
-wget -O $TMPDIR/MOAB.tar.gz $MOAB_TAR_URL
+curl -o $TMPDIR/MOAB.tar.gz $MOAB_TAR_URL
 tar -xf $TMPDIR/MOAB.tar.gz -C $TMPDIR
 # remove if exists
 if [[ -d $SCHRODINGER_PATH/queues/MOAB ]]; then
@@ -231,8 +231,7 @@ $SCHRODINGER_PATH/utilities/feature_flags -d JOBCON_JSERVER_GO || true
 $SCHRODINGER_PATH/utilities/jserver -cleanall || true
 $SCHRODINGER_PATH/utilities/jserver -shutdown || true
 
-echo 
+echo
 echo "Done."
 
 exit 0
-
