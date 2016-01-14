@@ -187,7 +187,7 @@ echo
 echo "Download and extracting the schrodinger.hosts packet"
 echo
 
-curl -o $TMPDIR/SchrodingerHost.tar.gz $SCHRODHOST_TAR_URL
+curl -Lo $TMPDIR/SchrodingerHost.tar.gz $SCHRODHOST_TAR_URL
 tar -xf $TMPDIR/SchrodingerHost.tar.gz -C $TMPDIR
 
 echo
@@ -216,7 +216,7 @@ echo "Installing MOAB submitter"
 echo "Downloading and extracting the MOAB submitter packet"
 echo
 
-curl -o $TMPDIR/MOAB.tar.gz $MOAB_TAR_URL
+curl -Lo $TMPDIR/MOAB.tar.gz $MOAB_TAR_URL
 tar -xf $TMPDIR/MOAB.tar.gz -C $TMPDIR
 # remove if exists
 if [[ -d $SCHRODINGER_PATH/queues/MOAB ]]; then
