@@ -2,10 +2,10 @@
 #
 # The hosts file consists of a series of entries describing each
 # 'host' (machine) on which jobs can be run.
-# 
+#
 # A 'name' line marks the beginning of each machine's entry.
 # (So, the first non-comment line in this file must be a 'name' line.)
-# 
+#
 # A host entry is a list of the settings to use when submitting a job to
 # a particular host or batch queue.  Each setting consists of a keyword
 # (ending with a ':') and its value.
@@ -24,7 +24,7 @@
 #                valid host name, a host: setting must be used to specify
 #                the actual host name.
 #
-#   host:        the actual hostname, e.g, 'erwin.schrodinger.com'. 
+#   host:        the actual hostname, e.g, 'erwin.schrodinger.com'.
 #                This is only necessary if different from the entry name.
 #                It is required for batch queue entries.
 #
@@ -34,7 +34,7 @@
 #                By default, the most recent version of the software
 #                among all listed directories will be used.
 #
-#   tmpdir:      a directory under which individual users' scratch 
+#   tmpdir:      a directory under which individual users' scratch
 #                directories are created, e.g., if tmpdir is '/scratch',
 #                then kim's temp directory will be '/scratch/kim'.
 #
@@ -43,7 +43,7 @@
 #
 # Hash marks (#) start comment lines.  Blank lines are ignored.
 #
-# If you need create a personalized version, copy this file to your 
+# If you need create a personalized version, copy this file to your
 # ~/.schrodinger directory or to the job directory and modify that copy.
 #
 #######################################################################
@@ -51,13 +51,10 @@
 #       are run without specifying a host.  Also, settings made in the
 #       'localhost' entry are implicitly included in every other host
 #       entry as well, so common settings (like 'schrodinger:') should
-#       be made there.  
+#       be made there.
 #######################################################################
 
 #
 name:           localhost
-tmpdir:         /tmp
 env:            LM_LICENSE_FILE=%LICENSE_SERVER%
 env:            SCHRODINGER_THIRDPARTY=/opt/bwgrid/chem/schrodinger/%SCHROD_VERSION%/thirdparty
-
-
