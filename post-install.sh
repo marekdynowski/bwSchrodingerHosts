@@ -30,10 +30,6 @@ cleanup_exit () {
 
 trap cleanup_exit EXIT	# execute on EXIT
 
-ping_github() {
-	ping -q -w 1 -c 1 github.com > /dev/null && return 0 || return 1
-}
-
 test_schrod_dir () {
 	if [[ -d $1 ]]; then
 		if [[ -w $1 ]]; then
@@ -60,30 +56,13 @@ echo "===== Schrodinger Post-Install ====="
 echo
 echo
 
-echo "Checking preconditions:"
-
-#printf "Checking git... "
-#if $HAS_GIT; then
-#	echo "OK"
-#else
-#	>&2 echo "git must be installed on this system"
-#	exit 1;
-#fi
-
-printf "Checking connection to GitHub... "
-if ping_github; then
-	echo "OK"
-else
-	>&2 echo "This system must have a working internet connection"
-	exit 1;
-fi
 echo "TMP dir: $TMPDIR"
 
 echo
 echo
 
 while true; do
-	read -e -p "Please specify your Schrodinger path: " -i "/opt/" u_schrod_path
+	read -e -p "Please specify your Schrodinger path: " u_schrod_path
 	u_schrod_path=$(echo $u_schrod_path | tr -s /)	# remove repeating '/'
 	u_schrod_path=${u_schrod_path%/}		# remove trailing '/'
 	if test_schrod_dir $u_schrod_path; then
@@ -111,6 +90,7 @@ echo
 echo "Please specify the license server, Schrodinger version and your username on following clusters. Type nothing if you don't have an account."
 read -e -p "License server: " u_license_server
 read -e -p "Schrodinger version (e.g. 2015u4): " u_schrod_version
+echo "=== Usernames for: ==="
 read -e -p "bwGRiD - Uni Tübingen: " u_user_bwgrid
 read -e -p "bwUni - Uni Karlsruhe: " u_user_bwuni
 read -e -p "Justus - Uni Ulm: " u_user_justus
